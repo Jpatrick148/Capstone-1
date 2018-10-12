@@ -11,10 +11,26 @@ namespace Capstone_1
         static void Main(string[] args)
         {
             Console.WriteLine("Please enter a word to be Translated to Pig Latin.");
-            int vIndex = Latin.VowelCheck(Console.ReadLine().ToLower());
+
+            string userInput = Console.ReadLine().ToLower();
+            int vIndex = Latin.VowelCheck(userInput.ToLower());
+            
 
             Console.WriteLine(vIndex);
             Console.ReadLine();
+
+            if (vIndex == -1)
+            {
+                Console.WriteLine(userInput + "way");
+            }
+            string first = userInput.Substring(0, vIndex);
+            int userLength = userInput.Length;
+            string last = userInput.Substring(vIndex, userLength);
+
+            Console.WriteLine(first);
+            Console.WriteLine(last);
+            Console.ReadLine();
+
         }
     }
 
@@ -29,9 +45,12 @@ namespace Capstone_1
                 {
                     return i;
                 }
+
             }
             return -1;
         }
+        
+      
     }
 
 }
