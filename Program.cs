@@ -10,35 +10,73 @@ namespace Capstone_1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter a word to be Translated to Pig Latin.");
 
-            string userInput = Console.ReadLine().ToLower();
-            int vIndex = Latin.VowelCheck(userInput.ToLower());
-            
-
-            Console.WriteLine(vIndex);
-            Console.ReadLine();
-
-            if (vIndex == -1)
+            do
             {
-                Console.WriteLine(userInput + "way");
+                Console.WriteLine("Please enter a word to be Translated to Pig Latin.");
+
+                string userInput = Console.ReadLine();
+                //int vIndex = Latin.VowelCheck(userInput);
+
+                
+
+                string[] words = userInput.Split(' ',',');
+                foreach (var word in words)
+                {
+                    int vIndex = Latin.VowelCheck(word);
+
+
+                    if (vIndex == 0)
+                    {
+                        Console.WriteLine(word + "way");
+                    }
+
+                    //string first = userInput.Substring(0, vIndex);
+
+                    //string last = userInput.Substring(vIndex);
+                    else
+                    {
+
+                        string first = word.Substring(0, vIndex);
+
+                        string last = word.Substring(vIndex);
+
+                        Console.WriteLine(last + first + "ay");
+                    }
+
+                    //Console.WriteLine(last + first + "ay");
+                }
+
+                Console.ReadLine();
+            } while (Continue() == true);
+        }
+
+        public static bool Continue()
+        {
+            Console.WriteLine("Again? {Y/N}");
+            string input = Console.ReadLine().ToLower();
+            if (input == "y")
+            {
+                return true;
             }
-            string first = userInput.Substring(0, vIndex);
-            int userLength = userInput.Length;
-            string last = userInput.Substring(vIndex, userLength);
-
-            Console.WriteLine(first);
-            Console.WriteLine(last);
-            Console.ReadLine();
-
+            else if (input == "n")
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Please Try Again.");
+                return Continue();
+            }
         }
     }
 
     class Latin
     {
+
         public static int VowelCheck(string word)
         {
-            var vowels = new List<char> {'a', 'e', 'i', 'o', 'u'};
+            var vowels = new List<char> {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
             for (int i = 0; i < word.Length; i++)
             {
                 if (vowels.Contains(word[i]))
@@ -47,10 +85,21 @@ namespace Capstone_1
                 }
 
             }
-            return -1;
+            return 0;
         }
-        
-      
+
+        public static int SymbolCheck(string word)
+        {
+            var symbol = new List<char> {'!','@','#','$','%','^','&','*','(',')','-','_','=','+','[','{',']',']','}','|',';',':','"','<','>','/','?'};
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word.Contains(symbol[i]))
+                {
+                    return -1;
+                }
+            }
+        }
+
     }
 
 }
