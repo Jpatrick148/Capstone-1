@@ -28,7 +28,7 @@ namespace Capstone_1
 
                     if (vIndex == 0)
                     {
-                        Console.WriteLine(word + "way");
+                        Console.Write(word + "way" + " ");
                     }
 
                     //string first = userInput.Substring(0, vIndex);
@@ -41,7 +41,7 @@ namespace Capstone_1
 
                         string last = word.Substring(vIndex);
 
-                        Console.WriteLine(last + first + "ay");
+                        Console.Write(last + first + "ay" + " ");
                     }
 
                     //Console.WriteLine(last + first + "ay");
@@ -88,17 +88,13 @@ namespace Capstone_1
             return 0;
         }
 
-        public static int SymbolCheck(string word)
-        {
-            var symbol = new List<char> {'!','@','#','$','%','^','&','*','(',')','-','_','=','+','[','{',']',']','}','|',';',':','"','<','>','/','?'};
-            for (int i = 0; i < word.Length; i++)
-            {
-                if (word.Contains(symbol[i]))
-                {
-                    return -1;
-                }
-            }
-        }
+        //public static int SymbolCheck(string word)
+        //{
+        //    var symbol = new List<char> {'!','@','#','$','%','^','&','*','(',')','-','_','=','+','[','{',']',']','}','|',';',':','"','<','>','/','?'};
+        //    for (int i = 0; i < word.Length; i++)
+            
+              
+        //}
 
     }
 
